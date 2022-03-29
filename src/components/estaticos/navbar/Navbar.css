@@ -1,3 +1,10 @@
 .menu {
     background-color: rgb(241, 102, 195) !important;
+    text-decoration: none!important;
+}
+
+.cursor {
+    cursor: pointer;
+    color: white;
+    text-decoration: none!important;
 }

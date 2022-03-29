@@ -4,7 +4,9 @@ import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/footer';
 
 import Home from './paginas/home/Home';
-import Login from './paginas/login/Login'
+import Login from './paginas/login/Login';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
+
 
 import './App.css';
 
@@ -27,6 +29,10 @@ function App() {
 
               <Route path='/home'>
                 <Home/>
+              </Route>
+              
+              <Route path='/cadastrousuario'>
+                <CadastroUsuario/>
               </Route>
             </div>
           </Switch>
