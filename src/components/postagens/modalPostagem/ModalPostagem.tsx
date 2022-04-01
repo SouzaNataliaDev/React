@@ -54,7 +54,7 @@ function ModalPostagem () {
       <CadastroPost/>
       
     </div>
-  );
+  ); 
 
   return (
     <div>
@@ -68,9 +68,11 @@ function ModalPostagem () {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        {body}
-      </Modal>
+        {body} 
+        
+      </Modal> 
     </div>
-  );
+  )  /* {body} reinderiza a const body*/
 }
-export default ModalPostagem
+
+export default ModalPostagem;

@@ -8,9 +8,9 @@ import Postagem from '../../../models/Postagem';
 import { busca, buscaId, post, put } from '../../../services/Service';
 
 function CadastroPost() {
-    let history = useHistory();
-    const { id } = useParams<{ id: string }>();
-    const [temas, setTemas] = useState<Tema[]>([])
+    let history = useHistory(); /*reinderiza a pagina quando recebe ocorre mudança no componente */
+    const { id } = useParams<{ id: string }>(); /* pega o parametro da url, o {id} */
+    const [temas, setTemas] = useState<Tema[]>([]) /*[] TEM CONCHETES POR  QUE É UM ARRAY*/
     const [token, setToken] = useLocalStorage('token');
 
     useEffect(() => {
@@ -33,17 +33,17 @@ function CadastroPost() {
         tema: null
     })
 
-    useEffect(() => { 
+    useEffect(() => {
         setPostagem({
             ...postagem,
             tema: tema
         })
-    }, [tema])
+    }, [tema]) /*Ele monitora o usestate (tema) e quando ele visualiza uma mudaça no select de postagem, a função é acionada*/
 
     useEffect(() => {
         getTemas()
         if (id !== undefined) {
-            findByIdPostagem(id)
+            findByIdPostagem(id)  /*função criada na linha 58*/
         }
     }, [id])
 
@@ -74,10 +74,11 @@ function CadastroPost() {
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
+        e.preventDefault()  /*pega as informações que o usuario digita, e envia as informações de cadastro de postagem, 
+                              para verificar se já exite e deve acionar o metodo put ou criar e acionar o post (alerta conforme método.)*/
 
         if (id !== undefined) {
-            put(`/postagens`, postagem, setPostagem, {
+            put(`/postagens`, postagem, setPostagem, { /*As funções foram criadas na service */
                 headers: {
                     'Authorization': token
                 }
@@ -91,11 +92,11 @@ function CadastroPost() {
             })
             alert('Postagem cadastrada com sucesso');
         }
-        back()
+        back() 
 
     }
 
-    function back() {
+    function back() {  /*Função retorna para o caminho /posts usando o hook useHistory, ela é chamada na função onSubmit linha 95*/
         history.push('/posts')
     }
 
@@ -103,15 +104,27 @@ function CadastroPost() {
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
                 <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro postagem</Typography>
-                <TextField value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="titulo" label="titulo" variant="outlined" name="titulo" margin="normal" fullWidth />
-                <TextField value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="texto" label="texto" name="texto" variant="outlined" margin="normal" fullWidth />
+                
+                <TextField 
+                value={postagem.titulo} 
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}
+                 id="titulo" label="titulo" variant="outlined" name="titulo" margin="normal" fullWidth />
+
+                <TextField 
+                value={postagem.texto}
+                 onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} 
+                 id="texto" label="texto" name="texto" variant="outlined" margin="normal" fullWidth />
 
                 <FormControl >
                     <InputLabel id="demo-simple-select-helper-label">Tema </InputLabel>
+                    
                     <Select
-                        labelId="demo-simple-select-helper-label"
+                        labelId="demo-simple-select-helper-label" /*configuração do materialUi por padrão do botão select*/
                         id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/tema/${e.target.value}`, setTema, {
+
+                        /*Essa função está atualizando os temas da tabela ou criando casa o id não exista */
+                        onChange={(e) => buscaId(`/tema/${e.target.value}`, setTema, { /*onChange é disparado quando uma mudança ocorre no componente. 
+                                                                                           quando ele é executado a const da linha 24 é atualizada*/
                             headers: {
                                 'Authorization': token
                             }
@@ -119,7 +132,7 @@ function CadastroPost() {
                         {
                             temas.map(tema => (
                                 <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
-                            ))
+                            )) /* esse método pega o id de cada tema e descrição, e imprime a array na tela (somente a descrição, id apenas armazena*/
                         }
                     </Select>
                     <FormHelperText>Escolha um tema para a postagem</FormHelperText>

@@ -7,7 +7,7 @@ export const api = axios.create({
 
 export const cadastroUsuario = async(url: any, dados: any, setDado: any) => {
     const resposta = await api.post(url, dados)
-    setDado(resposta.data)
+    setDado(resposta.data)  /* setDado pega a informação que o usuario digita*/
 }
 
 export const login = async(url: any, dados: any, setDado: any) => {
