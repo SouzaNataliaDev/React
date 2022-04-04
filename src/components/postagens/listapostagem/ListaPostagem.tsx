@@ -5,12 +5,21 @@ import './ListaPostagem.css';
 import Postagem from '../../../models/Postagem';
 import useLocalStorage from 'react-use-localstorage';
 import { busca } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
-  const [token, setToken] = useLocalStorage('token');
+
+
 let history = useHistory();
+
+const token = useSelector<TokenState, TokenState["tokens"]>( /*acessa o store e atribui o valor para a constante token*/
+/*TokenState foi criado na model*/
+(state) => state.tokens
+);
+
 
 
 useEffect(() => {
@@ -21,7 +30,7 @@ useEffect(() => {
 }, [token])
 
 
-async function getTema(){
+async function getPost(){
   await busca("/postagens", setPosts, {
     headers: {'Authorization': token}
   }
@@ -29,7 +38,7 @@ async function getTema(){
 }
 
 useEffect(() => {
-  getTema()
+  getPost()
 },[posts.length])
   
   

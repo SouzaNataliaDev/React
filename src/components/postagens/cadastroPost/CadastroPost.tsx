@@ -3,15 +3,22 @@ import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem,
 import './CadastroPost.css';
 import { useHistory, useParams } from 'react-router-dom';
 import Tema from '../../../models/Tema';
-import useLocalStorage from 'react-use-localstorage';
+
 import Postagem from '../../../models/Postagem';
 import { busca, buscaId, post, put } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function CadastroPost() {
     let history = useHistory(); /*reinderiza a pagina quando recebe ocorre mudança no componente */
     const { id } = useParams<{ id: string }>(); /* pega o parametro da url, o {id} */
     const [temas, setTemas] = useState<Tema[]>([]) /*[] TEM CONCHETES POR  QUE É UM ARRAY*/
-    const [token, setToken] = useLocalStorage('token');
+    
+    const token = useSelector<TokenState, TokenState["tokens"]>( /*acessa o store e atribui o valor para a constante token*/
+    /*TokenState foi criado na model*/
+(state) => state.tokens
+);
+
 
     useEffect(() => {
         if (token == "") {

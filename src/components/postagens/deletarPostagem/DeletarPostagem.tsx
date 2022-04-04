@@ -2,14 +2,22 @@ import React, { useEffect, useState } from 'react'
 import {Typography, Button, Box, Card, CardActions, CardContent } from "@material-ui/core"
 import './DeletarPostagem.css';
 import { useHistory, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+
 import Postagem from '../../../models/Postagem';
 import { buscaId, deleteId } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 {/*Exatamente igual ao DeletaTema (altera o nome das rotas*/}
 function DeletarPostagem() {
     let history = useHistory();
     const { id } = useParams<{id: string}>(); /* informa que ele recebe como parametro um id*/
-    const [token, setToken] = useLocalStorage('token');
+   
+    const token = useSelector<TokenState, TokenState["tokens"]>( /*acessa o store e atribui o valor para a constante token*/
+    /*TokenState foi criado na model*/
+(state) => state.tokens
+);
+
+
 const [post, setPosts] = useState<Postagem>() /* as constantes estão recebendo do usuario (setPosts) e alterando o valor de (post) para o valor recebido, e alterando a lista de Postagem que é uma array*/
 
     useEffect(() => {
