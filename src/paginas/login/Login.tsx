@@ -6,16 +6,13 @@ import UserLogin from '../../models/UserLogin';
 import './Login.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToken } from '../../store/tokens/actions'; /*vem do arquivo actions.ts*/
-import { TokenState } from '../../store/tokens/tokensReducer';
+import { toast } from "react-toastify";
 
 function Login() {
     let history = useHistory();
     const dispatch = useDispatch(); /*envia a ação para o reducer interceptar*/
 
-    const token = useSelector<TokenState, TokenState["tokens"]>( /*acessa o store e atribui o valor para a constante token*/
-    /*TokenState foi criado na model*/
-    (state) => state.tokens
-    );
+    const [token, setToken] = useState(''); 
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
             id: 0,
@@ -45,9 +42,27 @@ function Login() {
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
 
-            alert('Usuário logado com sucesso!');
-        } catch (error) {
-            alert('Dados do usuário inconsistentes. Erro ao logar!');
+            toast.success('Usuário logado com sucesso!', {
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'dark',
+                progress: undefined
+        }) 
+    } catch (error) {
+        toast.error('Os dados do usuário estão inconsistentes. Erro ao logar.', {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: 'dark',
+            progress: undefined
+        })
         }
     }
 

@@ -1,24 +1,43 @@
-import React from 'react';
 import { AppBar, Toolbar, Typography, Box,} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import {toast} from 'react-toastify';
+
 
 import '../navbar/Navbar.css';
-function Navbar() {
-    const [token, setToken] = useLocalStorage('token');
-    let history = useHistory();
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/actions';
 
+
+function Navbar() {
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+      );
+    let history = useHistory();
+    const dispatch = useDispatch();
 
     function quandoSair(){
-        setToken('')
-        alert("Usuário deslogado!")
+        dispatch(addToken(''));
+        toast.info('Usuário deslogado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
         history.push('/login')
     }
-    return (
-        <>
-            <AppBar className='menu' position="static">
+
+    var navbarComponent;
+
+   
+    if(token != ""){
+        navbarComponent =  <AppBar className='menu' position="static">
                 <Toolbar variant="dense">
                     <Box className='cursor' >
                         <Typography variant="h5" color="inherit">
@@ -67,6 +86,10 @@ function Navbar() {
 
                 </Toolbar>
             </AppBar>
+    }
+    return (
+        <>
+        {navbarComponent}
         </>
     )
 }

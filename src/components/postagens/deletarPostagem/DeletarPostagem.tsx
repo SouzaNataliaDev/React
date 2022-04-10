@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {Typography, Button, Box, Card, CardActions, CardContent } from "@material-ui/core"
 import './DeletarPostagem.css';
 import { useHistory, useParams } from 'react-router-dom';
-
 import Postagem from '../../../models/Postagem';
 import { buscaId, deleteId } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-{/*Exatamente igual ao DeletaTema (altera o nome das rotas*/}
+import { toast } from 'react-toastify';
+{/*Exatamente igual ao DeletarTema (altera o nome das rotas*/}
 function DeletarPostagem() {
     let history = useHistory();
     const { id } = useParams<{id: string}>(); /* informa que ele recebe como parametro um id*/
@@ -22,7 +22,16 @@ const [post, setPosts] = useState<Postagem>() /* as constantes estão recebendo 
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+          toast.error('Você precisa estar logado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
             history.push("/login") /* verifica se o usuario esta ou não logado.*/
     
         }
@@ -49,7 +58,16 @@ const [post, setPosts] = useState<Postagem>() /* as constantes estão recebendo 
                 'Authorization': token
               }
             });
-            alert('Postagem deletada com sucesso');
+            toast.success('Postagem deletada com sucesso', {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: false,
+              theme: "colored",
+              progress: undefined,
+          });
           }
         
           function nao() {
