@@ -92,7 +92,7 @@ function Login() {
                 </Box>
             </Grid>
             <Grid xs={6}>
-                <img src="https://i.pinimg.com/564x/56/8b/be/568bbed1285ca010d3753fea58a6f8c5.jpg" alt="" width="95%" height="100%" />
+                <img src="https://img.freepik.com/vetores-gratis/personagem-de-lampada-fofa-com-expressao-confusa-e-feliz_161751-1843.jpg" alt="" width="95%" height="100%" />
 
             </Grid>
         </Grid>

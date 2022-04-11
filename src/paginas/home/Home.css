@@ -12,12 +12,12 @@
 }
 
 .caixa {
-    background-color: white!important;
+    background-color: white;
 }
 
 .botao {
     border-color: white !important;
-    background-color: #3F51B5!important;
+    background-color: darkred!important;
     color: white !important;
 }
 

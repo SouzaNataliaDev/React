@@ -1,7 +1,12 @@
 .textos2 {
-    font-weight: bold!important;
+    font-weight: bold !important;
 }
 
 .btnCadastrar {
-    margin-right: 20px!important;
+    margin-right: 20px !important;
+    background-color:  darkred;
+}
+.btnCancelar{
+
+    background-color: darkblue;
 }
