@@ -1,7 +1,8 @@
 import GithubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import { Typography, Box, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
+import { Box } from '@mui/material';
 import './Footer.css';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
@@ -16,7 +17,7 @@ function Footer() {
     if (token != "") {
         footerComponent = <Grid container direction="row" justifyContent="center" alignItems="center">
             <Grid alignItems="center" item xs={12}>
-                <Box style={{ backgroundColor: "darkblue", height: "120px" }}>
+                <Box style={{ backgroundColor: "rgb(159, 165, 107)", height: "120px" }}>
                     <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
                         <Typography variant="h5" align="center" gutterBottom style={{ color: "white" }}>Siga-me nas redes </Typography>
                     </Box>
@@ -32,7 +33,7 @@ function Footer() {
                         </a>
                     </Box>
                 </Box>
-                <Box style={{ backgroundColor: "darkred", height: "60px" }}>
+                <Box style={{ backgroundColor: "black", height: "60px" }}>
                     <Box paddingTop={1}>
                         <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white" }} >© 2022 Copyright:</Typography>
                     </Box>

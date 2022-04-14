@@ -1,3 +1,9 @@
 .text-decorator-none {
     text-decoration: none;
 }
+.botaoAtualiar{
+    color: aqua!important;
+}
+.botaoCancelar{
+    background-color: blueviolet!important;
+}

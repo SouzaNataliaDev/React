@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Box, Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
+import { Box, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
 import './DeletarTema.css';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -82,10 +82,10 @@ function DeletarTema() {
           <CardContent>
             <Box justifyContent="center">
               <Typography color="textSecondary" gutterBottom>
-                Deseja deletar o Tema:
+                Deseja deletar o Tema?
               </Typography>
               <Typography color="textSecondary">
-                {tema?.descricao} {/*stateTema */}
+                {tema?.descricao} 
               </Typography>
             </Box>
           </CardContent>

@@ -1,6 +1,7 @@
 .menu {
-    background-color: darkred !important;
+    background-color: rgb(0, 0, 0)!important;
     text-decoration: none!important;
+    font-family: Arial, Helvetica, sans-serif!important;
 }
 
 .cursor {

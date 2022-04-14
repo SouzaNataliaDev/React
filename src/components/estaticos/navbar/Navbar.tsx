@@ -1,10 +1,10 @@
-import { AppBar, Toolbar, Typography, Box,} from '@material-ui/core';
+import { AppBar, Toolbar, Typography} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import {toast} from 'react-toastify';
 
-
+import { Box } from '@mui/material';
 import '../navbar/Navbar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';

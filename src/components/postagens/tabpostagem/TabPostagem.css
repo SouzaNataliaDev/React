@@ -1,8 +1,14 @@
 .Botao{
 text-decoration: black;
 color: black;
+font-size:16px !important;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .corTabela{
-    background-color: darkred;
+    background-color: rgb(139, 146, 74);
     text-decoration: black;
+}
+.fonttexto{
+    font-size:medium !important;
+    text-decoration-color: aqua;
 }

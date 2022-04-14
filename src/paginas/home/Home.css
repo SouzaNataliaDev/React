@@ -1,5 +1,5 @@
 .titulo {
-    color: black!important;
+    color: rgb(204, 206, 195)!important;
     text-align: center!important;
     font-weight: bold!important;
 }
@@ -12,15 +12,15 @@
 }
 
 .caixa {
-    background-color: white;
+    background-color: #863294;
 }
 
 .botao {
     border-color: white !important;
-    background-color: darkred!important;
+    background-color: rgb(159, 165, 107)!important;
     color: white !important;
 }
 
 .postagens {
-    background-color: white !important;
+    background-color: rgb(228, 188, 218) !important;
 }
